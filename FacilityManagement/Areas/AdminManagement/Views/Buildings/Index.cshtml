@@ -1,0 +1,93 @@
+﻿@model IEnumerable<FacilityManagement.Models.Building>
+
+@{
+    ViewData["Title"] = "Danh Sách Tòa Nhà";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .table thead {
+        background-color: #052c93;
+        color: white;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f2f2f2;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .action-links a {
+        color: #052c93;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+        .action-links a:hover {
+            text-decoration: underline;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-building"></i> Danh Sách Tòa Nhà</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Thêm Tòa Nhà Mới</a>
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th><i class="fas fa-signature"></i> Tên Tòa Nhà</th>
+            <th><i class="fas fa-file-alt"></i> Mô Tả</th>
+            <th><i class="fas fa-map-marker-alt"></i> Khuôn Viên</th>
+            <th><i class="fas fa-tools"></i> Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.BuildingName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Campus.CampusId)</td>
+                <td class="action-links">
+                    <a asp-action="Edit" asp-route-id="@item.BuildingId"><i class="fas fa-edit"></i> Chỉnh Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.BuildingId"><i class="fas fa-info-circle"></i> Chi Tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.BuildingId" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

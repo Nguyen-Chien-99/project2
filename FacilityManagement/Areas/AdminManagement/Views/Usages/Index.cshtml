@@ -1,0 +1,115 @@
+﻿@model IEnumerable<FacilityManagement.Models.Usage>
+
+@{
+    ViewData["Title"] = "Danh Sách Sử Dụng";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #052c93;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    th {
+        background-color: #052c93;
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: black;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+</style>
+
+<div class="container">
+    <h1 class="text-primary"><i class="fas fa-list-alt"></i> Danh Sách Sử Dụng</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo Mới</a>
+    </p>
+    <table class="table table-bordered table-hover shadow-sm bg-white">
+        <thead class="bg-primary text-white">
+            <tr>
+                <th><i class="fas fa-user"></i> @Html.DisplayNameFor(model => model.UsedBy)</th>
+                <th><i class="fas fa-calendar-alt"></i> @Html.DisplayNameFor(model => model.UsageDate)</th>
+                <th><i class="fas fa-file-alt"></i> @Html.DisplayNameFor(model => model.Purpose)</th>
+                <th><i class="fas fa-door-open"></i> @Html.DisplayNameFor(model => model.Room)</th>
+                <th><i class="fas fa-cogs"></i> Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UsedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UsageDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Purpose)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Room.RoomName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.UsageId" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Sửa</a>
+                        <a asp-action="Details" asp-route-id="@item.UsageId" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i> Chi Tiết</a>
+                        <a asp-action="Delete" asp-route-id="@item.UsageId" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

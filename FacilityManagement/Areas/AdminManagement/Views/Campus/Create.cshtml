@@ -1,0 +1,82 @@
+﻿@model FacilityManagement.Models.Campus
+
+@{
+    ViewData["Title"] = "Tạo Mới Khuôn Viên";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .form-group label {
+        font-weight: bold;
+        color: #052c93;
+    }
+
+    .btn-link.text-primary {
+        color: #052c93;
+        font-weight: bold;
+    }
+
+        .btn-link.text-primary:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-plus-circle"></i> Tạo Mới Khuôn Viên</h1>
+
+<h4 class="text-primary"><i class="fas fa-map-marked-alt"></i> Thông Tin Khuôn Viên</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CampusName" class="control-label"><i class="fas fa-signature"></i> Tên Khuôn Viên</label>
+                <input asp-for="CampusName" class="form-control" />
+                <span asp-validation-for="CampusName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"><i class="fas fa-map-marker-alt"></i> Địa Chỉ</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"><i class="fas fa-file-alt"></i> Mô Tả</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Tạo Mới</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-link text-primary"><i class="fas fa-arrow-left"></i> Trở Về Danh Sách</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

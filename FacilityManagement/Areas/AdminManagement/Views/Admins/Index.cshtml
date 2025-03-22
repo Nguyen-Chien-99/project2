@@ -1,0 +1,116 @@
+﻿@model IEnumerable<FacilityManagement.Models.Admin>
+
+@{
+    ViewData["Title"] = "Trang Chủ";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .btn-primary, .table th {
+        background-color: #052c93;
+        color: white;
+    }
+
+    .table th, .table td {
+        text-align: center;
+    }
+
+    .table thead th {
+        background-color: #052c93;
+        color: white;
+    }
+
+    .btn-primary {
+        color: white;
+        background-color: #052c93;
+        border-color: #052c93;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: black;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-home"></i> Trang Chủ Quản Trị Viên</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo Mới</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                <i class="fas fa-user"></i>Tên Quản Trị
+            </th>
+            <th>
+                <i class="fas fa-user-circle"></i> Tên Đăng Nhập
+            </th>
+            <th>
+                <i class="fas fa-lock"></i> Mật Khẩu
+            </th>
+            <th>
+                <i class="fas fa-envelope"></i> Email
+            </th>
+            <th>
+                <i class="fas fa-phone"></i> Số Điện Thoại
+            </th>
+            <th>
+                <i class="fas fa-calendar-alt"></i> Ngày Tạo
+            </th>
+            <th><i class="fas fa-tools"></i> Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdminName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    ********
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AdminId" class="btn btn-warning"><i class="fas fa-edit"></i> Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.AdminId" class="btn btn-info"><i class="fas fa-info-circle"></i> Chi Tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.AdminId" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

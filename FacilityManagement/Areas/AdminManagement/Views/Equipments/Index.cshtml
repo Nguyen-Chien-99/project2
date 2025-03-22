@@ -1,0 +1,117 @@
+﻿@model IEnumerable<FacilityManagement.Models.Equipment>
+
+@{
+    ViewData["Title"] = "Danh Sách Thiết Bị";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: black;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+
+    .bg-orange {
+        background-color: #fd7e14 !important;
+        color: white;
+    }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-tools"></i> Danh Sách Thiết Bị</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo Mới</a>
+</p>
+
+<table class="table table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th><i class="fas fa-image"></i> Hình Ảnh</th>
+            <th><i class="fas fa-signature"></i> Tên Thiết Bị</th>
+            <th><i class="fas fa-list-alt"></i> Loại Thiết Bị</th>
+            <th><i class="fas fa-toggle-on"></i> Trạng Thái</th>
+            <th><i class="fas fa-file-alt"></i> Mô Tả</th>
+            <th><i class="fas fa-door-open"></i> Phòng</th>
+            <th class="text-center"><i class="fas fa-cogs"></i> Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.Image" alt="Hình ảnh" style="width: 50px; height: 50px; border-radius: 5px;">
+                </td>
+                <td>@item.EquipmentName</td>
+                <td>@item.EquipmentType</td>
+                <td>
+                    @{
+                        string statusClass = "";
+                        switch (item.Status)
+                        {
+                            case "Đang bảo trì":
+                                statusClass = "badge bg-warning text-dark";
+                                break;
+                            case "Đang sửa chữa":
+                                statusClass = "badge bg-orange text-dark";
+                                break;
+                            case "Hỏng":
+                                statusClass = "badge bg-danger";
+                                break;
+                            case "Sẵn sàng":
+                                statusClass = "badge bg-success";
+                                break;
+                            default:
+                                statusClass = "badge bg-secondary";
+                                break;
+                        }
+                    }
+                    <span class="@statusClass">@item.Status</span>
+                </td>
+                <td>@item.Description</td>
+                <td>@item.Room.RoomName</td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.EquipmentId" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.EquipmentId" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Chi Tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.EquipmentId" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

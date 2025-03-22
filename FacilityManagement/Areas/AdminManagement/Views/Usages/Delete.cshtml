@@ -1,0 +1,88 @@
+﻿@model FacilityManagement.Models.Usage
+
+@{
+    ViewData["Title"] = "Xóa Thông Tin Sử Dụng";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #052c93;
+    }
+
+    .dl-horizontal dt {
+        color: #052c93;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+        }
+
+    a {
+        color: #052c93;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="container">
+    <h1 class="text-danger"><i class="fas fa-trash-alt"></i> Xóa Thông Tin Sử Dụng</h1>
+
+    <h3><i class="fas fa-exclamation-triangle"></i> Bạn có chắc chắn muốn xóa?</h3>
+    <div>
+        <h4>Thông tin sử dụng</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                <i class="fas fa-user"></i> @Html.DisplayNameFor(model => model.UsedBy)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UsedBy)
+            </dd>
+            <dt class="col-sm-2">
+                <i class="fas fa-calendar-alt"></i> @Html.DisplayNameFor(model => model.UsageDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UsageDate)
+            </dd>
+            <dt class="col-sm-2">
+                <i class="fas fa-file-alt"></i> @Html.DisplayNameFor(model => model.Purpose)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Purpose)
+            </dd>
+            <dt class="col-sm-2">
+                <i class="fas fa-door-open"></i> @Html.DisplayNameFor(model => model.Room)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Room.RoomName)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="UsageId" />
+            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</button>
+            <a asp-action="Index">Quay lại danh sách</a>
+        </form>
+    </div>
+</div>

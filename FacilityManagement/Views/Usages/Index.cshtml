@@ -1,0 +1,74 @@
+﻿@model IEnumerable<FacilityManagement.Models.Usage>
+
+@{
+    ViewData["Title"] = "Danh Sách Sử Dụng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h1, h2, h3, h4, h5, h6 {
+        color: #052c93; /* Màu chủ đạo: Xanh đậm */
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6b;
+            border-color: #041f6b;
+        }
+
+    .table {
+        border: 1px solid #052c93;
+    }
+
+        .table th {
+            background-color: #052c93;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+    .table-hover tbody tr:hover {
+        background-color: #e0e8f9; /* Màu nền khi hover */
+    }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-list-alt"></i> Danh Sách Sử Dụng</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo Mới</a>
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th><i class="fas fa-user"></i> Người Sử Dụng</th>
+            <th><i class="fas fa-calendar-alt"></i> Ngày Sử Dụng</th>
+            <th><i class="fas fa-file-alt"></i> Mục Đích Sử Dụng</th>
+            <th><i class="fas fa-door-open"></i> Loại Phòng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.UsedBy)</td>
+                <td>@Html.DisplayFor(modelItem => item.UsageDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Purpose)</td>
+                <td>@Html.DisplayFor(modelItem => item.Room.RoomType)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

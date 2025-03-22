@@ -1,0 +1,87 @@
+﻿@model FacilityManagement.Models.Staff
+
+@{
+    ViewData["Title"] = "Xóa Nhân Viên";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93 !important;
+    }
+
+    .btn-danger {
+        background-color: #d9534f;
+        border-color: #d9534f;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+
+    .btn-secondary {
+        background-color: #ccc;
+        border-color: #ccc;
+        color: black;
+    }
+
+        .btn-secondary:hover {
+            background-color: #b3b3b3;
+        }
+</style>
+
+<h1 class="text-danger"><i class="fas fa-trash-alt"></i> Xóa Nhân Viên</h1>
+
+<h3><i class="fas fa-exclamation-triangle"></i> Bạn có chắc chắn muốn xóa nhân viên này?</h3>
+<div class="card shadow-sm p-4 bg-white rounded">
+    <h4 class="text-dark"><i class="fas fa-info-circle"></i> Thông Tin Nhân Viên</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2 text-primary">
+            <i class="fas fa-signature"></i> @Html.DisplayNameFor(model => model.StaffName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StaffName)
+        </dd>
+        <dt class="col-sm-2 text-primary">
+            <i class="fas fa-briefcase"></i> @Html.DisplayNameFor(model => model.Position)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+        <dt class="col-sm-2 text-primary">
+            <i class="fas fa-phone"></i> @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class="col-sm-2 text-primary">
+            <i class="fas fa-envelope"></i> @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2 text-primary">
+            <i class="fas fa-door-open"></i> @Html.DisplayNameFor(model => model.AssignedRoom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssignedRoom.RoomName)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="StaffId" />
+        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</button>
+        <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay Lại Danh Sách</a>
+    </form>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

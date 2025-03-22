@@ -1,0 +1,366 @@
+﻿<style>
+
+    /* Tiêu đề */
+
+    h1 {
+
+        font-size: 36px;
+
+        font-weight: bold;
+
+        color: #eb272c; /* Màu đỏ */
+
+        text-align: center;
+
+        margin-bottom: 30px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 1px; /* Khoảng cách giữa các chữ */
+
+    }
+
+
+
+    h2 {
+
+        font-size: 24px;
+
+        font-weight: bold;
+
+        color: #4b8ac9; /* Màu xanh */
+
+        margin-bottom: 20px;
+
+        text-transform: capitalize;
+
+    }
+
+
+
+    h3, h4, h5, h6 {
+
+        font-size: 20px;
+
+        font-weight: bold;
+
+        color: #4b8ac9;
+
+        margin-bottom: 15px;
+
+    }
+
+
+
+    /* Nội dung văn bản */
+
+    p {
+
+        font-size: 16px;
+
+        line-height: 1.6;
+
+        color: #333; /* Màu văn bản tối */
+
+        margin-bottom: 20px;
+
+        text-align: justify; /* Căn chỉnh đều nội dung */
+
+    }
+
+
+
+        p strong {
+
+            font-weight: bold;
+
+            color: #eb272c; /* Màu đỏ cho các văn bản quan trọng */
+
+        }
+
+
+
+    /* Chỉnh hình ảnh */
+
+    #main img {
+
+        width: 100%;
+
+        height: auto;
+
+        display: block;
+
+        margin: 20px auto;
+
+        border: 2px solid #ddd;
+
+        border-radius: 10px; /* Bo tròn góc nhiều hơn */
+
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng mềm */
+
+    }
+
+
+
+    img {
+
+        max-width: 100%;
+
+        height: auto;
+
+        display: block;
+
+        margin: 20px auto;
+
+        border: 2px solid #ddd;
+
+        border-radius: 10px; /* Bo tròn góc nhiều hơn */
+
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng mềm */
+
+    }
+
+
+
+    /* Caption hình ảnh */
+
+    figcaption {
+
+        text-align: center;
+
+        font-size: 14px;
+
+        color: #777;
+
+        margin-top: 5px;
+
+    }
+
+
+
+    /* Tiêu đề banner */
+
+    .page-title-bg {
+
+        background-color: #4b8ac9; /* Nền xanh */
+
+        padding: 60px 0;
+
+        color: #fff;
+
+        text-align: center;
+
+        border-bottom: 3px solid #eb272c; /* Viền đỏ dưới */
+
+    }
+
+
+
+        .page-title-bg .entry-title {
+
+            font-size: 48px;
+
+            font-weight: bold;
+
+            margin: 0;
+
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Đổ bóng chữ */
+
+            letter-spacing: 2px;
+
+        }
+
+
+
+    /* Bố cục bài viết */
+
+    .entry-content p {
+
+        margin-bottom: 25px; /* Tăng khoảng cách cho các đoạn văn */
+
+    }
+
+
+
+        .entry-content p strong {
+
+            font-weight: bold;
+
+            color: #eb272c;
+
+        }
+
+
+
+        /* Phần thông tin bên trong */
+
+        .entry-content p img {
+
+            width: 100%; /* Đảm bảo hình ảnh vừa với màn hình */
+
+            border-radius: 10px;
+
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Tăng độ mờ cho đổ bóng */
+
+        }
+
+
+
+    .entry-content div {
+
+        margin-bottom: 30px; /* Tăng khoảng cách giữa các phần */
+
+    }
+
+
+
+    /* Điều chỉnh cho các thẻ p */
+
+    .entry-content p {
+
+        font-size: 16px;
+
+        line-height: 1.7;
+
+        color: #555;
+
+        text-align: justify;
+
+    }
+
+
+
+    /* Điều chỉnh kích thước hình ảnh */
+
+    .entry-content img {
+
+        border-radius: 8px;
+
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+
+    }
+
+
+
+    /* Thiết kế cho các phần tử trong bài viết */
+
+    .entry-content p strong {
+
+        color: #eb272c;
+
+    }
+
+
+
+    /* Điều chỉnh các phần tử khi chúng nằm trong một div */
+
+    .entry-content > div {
+
+        margin-bottom: 30px; /* Tăng khoảng cách giữa các phần tử */
+
+    }
+
+
+
+    /* Các phần tử hình ảnh sẽ tự động co giãn */
+
+    .img-fluid {
+
+        max-width: 100%;
+
+        height: auto;
+
+    }
+
+</style>
+
+
+
+<main id="main" class="container">
+    <header class="page-title-bg text-white text-center py-5">
+        <h1 class="entry-title">Cơ sở vật chất <i class="fas fa-university"></i></h1>
+    </header>
+    <div class="entry-content mt-4">
+        <p><strong><span style="font-size: 16px;"><em>Với mục tiêu “Sinh viên là số 1” và tạo điều kiện tốt nhất cho sinh viên trong quá trình học tập, trường Đại học Nguyễn Trãi (NTU) hướng tới việc xây dựng môi trường học tập theo tiêu chí: Chuyên nghiệp – Thân thiện – Năng động.</em></span></strong></p>
+        <p style="text-align: justify;"><span style="font-size: 16px;">Để đảm bảo chất lượng đào tạo, trường Đại học Nguyễn Trãi đã và đang tích cực đầu tư, hoàn thiện hệ thống cơ sở vật chất và trang thiết bị giảng dạy đạt chuẩn quốc tế.</span></p>
+        <p style="text-align: justify;"><span style="font-size: 16px;"><strong>Điều kiện học tập</strong></span></p>
+        <p><span style="font-size: 16px;">Cơ sở 1: Tại tòa nhà LADECO 266 Đội Cấn – Ba Đình – Hà Nội</span></p>
+        <p><span style="font-size: 16px;">Với tổng diện tích xây dựng là 7.122 m2 với Hệ thống đại giảng đường doanh nghiệp đầu tiên tại Việt Nam. </span>Đây là nơi hội tụ các doanh nghiệp đa lĩnh vực, ngành nghề là nơi mang đến những trải nghiệm thực tập, thực tế cho sinh viên NTU.</p>
+        <img src="./images/img16.png" class="img-fluid rounded shadow my-3" alt="Cơ sở 1">
+        <p><strong>Cơ sở 2: Tòa nhà 28A, Lê Trọng Tấn, Hà Đông, Hà Nội </strong></p>
+        <p style="text-align: justify;"><span style="font-size: 16px;"><strong>Hệ thống phòng học:&nbsp;</strong>Hệ thống phòng học được đầu tư các trang thiết bị hiện đại: như máy chiếu, điều hòa nhiệt độ, hệ thống âm thanh, hệ thống thiết bị chiếu sáng, thông gió<strong>,</strong> máy chiếu, điều hòa,… hỗ trợ tích cực cho hoạt động học tập và giảng dạy.</span></p>
+        <p style="text-align: justify;"><span style="font-size: 16px;">Tất cả các phòng/lớp học của NTU: Lớp học Tiếng Hàn thông minh, phòng Vẽ, phòng máy, phòng Cenima …đều được trang bị các phương tiện Media cao cấp, đầy đủ các thiết bị hỗ trợ cho hoạt động đào tạo và nghiên cứu khoa học, hệ thống mạng máy tính đồng bộ, sử dụng các phầm mềm được cung cấp bởi Microsoft.</span></p>
+        <img src="./images/img15.png" class="img-fluid rounded shadow my-3" alt="Phòng học hiện đại">
+        <div>
+            <p>Hệ thống phòng học được trang trí theo đặc trưng ngành</p>
+            <img src="./images/img14.png" class="img-fluid rounded shadow my-3" alt="Phòng học đặc trưng">
+        </div>
+        <div>
+            <p>Các phòng học đều được trang bị điều hòa, máy chiếu, TV…</p>
+            <img src="./images/img13.png" class="img-fluid rounded shadow my-3" alt="Phòng học tiện nghi">
+        </div>
+        <div>
+            <p>Phòng học tiếng Hàn thông minh</p>
+            <img src="./images/img12.png" class="img-fluid rounded shadow my-3" alt="Phòng học tiếng Hàn">
+        </div>
+        <div>
+            <p>Phòng học tiếng Nhật</p>
+            <img src="./images/img11.png" class="img-fluid rounded shadow my-3" alt="Phòng học tiếng Nhật">
+        </div>
+        <div>
+            <p>Thư viện đa màu sắc</p>
+            <img src="./images/img10.png" class="img-fluid rounded shadow my-3" alt="Thư viện">
+        </div>
+        <div>
+            <p>Hệ thống máy tính tại phòng máy được trang bị hiện đại, đời mới</p>
+            <img src="./images/img9.png" class="img-fluid rounded shadow my-3" alt="Phòng máy tính">
+        </div>
+        <div>
+            <p>Phòng chờ dành cho Giảng viên, sinh viên</p>
+            <img src="./images/img8.png" class="img-fluid rounded shadow my-3" alt="Phòng chờ">
+        </div>
+        <div>
+            <p>Phòng máy hiện đại và sang trọng</p>
+            <img src="./images/img7.png" class="img-fluid rounded shadow my-3" alt="Phòng máy sang trọng">
+        </div>
+        <div>
+            <p>“Thảm cỏ xanh” một trong những khuôn viên yêu thích nhất của sinh viên</p>
+            <img src="./images/img6.png" class="img-fluid rounded shadow my-3" alt="Thảm cỏ xanh">
+        </div>
+        <div>
+            <p>Cây bán hàng tự động tiện ích phục vụ thầy và trò</p>
+            <img src="./images/img5.png" class="img-fluid rounded shadow my-3" alt="Cây bán hàng tự động">
+        </div>
+        <div>
+            <p>Phòng vẽ ngăn nắp, gọn gàng</p>
+            <img src="./images/img4.png" class="img-fluid rounded shadow my-3" alt="Phòng vẽ">
+        </div>
+        <div>
+            <p>Thư viện xanh – sạch – đẹp</p>
+            <img src="./images/img3.png" class="img-fluid rounded shadow my-3" alt="Thư viện xanh">
+        </div>
+        <div>
+            <p>Phòng học trang bị bàn ghế hiện đại</p>
+            <img src="./images/img2.png" class="img-fluid rounded shadow my-3" alt="Phòng học hiện đại">
+        </div>
+                <p>&nbsp;</p>
+                <div class="entry-content">
+                   <p><strong>Cơ sở 3: Dự án </strong><strong>Khu đô thị đại học thông minh quốc tế Nguyễn Trãi </strong><strong>với quy mô </strong><strong>34ha bao gồm</strong>:</p>
+                    <p>– Khu đất 14ha có chức năng là Trường Đại học và các Viện nghiên cứu. Gồm có, Trường Đại học Nguyễn Trãi; trường Đại học Quốc tế Việt Hàn; trường Phổ thông Quốc tế nhiều cấp học; Nhà Văn hóa Việt Hàn; Bệnh viện thực hành và Khu cây xanh, Thể dục thể thao, giao thông.</p>
+                    <p>– Khu đất 20ha có chức năng đô thị trong đó 3,7ha đất giao thông mở đường vành đai 3,5; đất nhà ở 2,3ha; đất hỗn hợp 14ha có chức năng đô thị, đất nhóm nhà ở xây dựng mới, đất công viên cây xanh, thể dục thể thao đơn vị ở, đất giao thông.</p>
+                    <p><img src="./images/img1.png"></p>
+                    <p>Đây là nơi thúc đẩy hệ sinh thái khởi nghiệp đổi mới sáng tạo, là nơi thực hiện hóa năng lực tiếp cận cuộc cách mạng lần thứ Tư. Hiện thực hóa ứng dụng công nghệ cao từ quản trị đến vận hành như: “Quản trị thông minh, Kinh tế thông minh, Môi trường thông minh, kết nối hạ tầng thông minh và nâng cao chất lượng cuộc sống con người”.</p>
+                    <p>Smart city – Khu Đô thị mới Đại học thông minh Quốc tế Nguyễn Trãi là dự án được đầu tư xây dựng và phát triển các hệ sinh thái đào tạo giáo dục từ mầm non tới đại học và sau đại học:</p>
+                    <p>(1) Hệ sinh thái giáo dục đào tạo, nghiên cứu khoa học, đào tạo nhân lực chất lượng quốc tế với chương trình đào tạo quốc tế cấp bằng tại Việt Nam</p>
+                    <p>(2) Hệ sinh thái nghiên cứu, phát triển ứng dụng công nghệ cao, công nghệ số, trí tuệ nhân tạo, đổi mới sáng tạo</p>
+                    <p>(3) Hệ sinh thái hạ tầng, đô thị thông minh, dịch vụ y tế, tài chính; các quỹ tích tụ các giá trị văn hiến, văn hóa Việt Nam, giao lưu văn hóa quốc tế.</p>
+                    <p><img src="./images/img1.png"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</main>

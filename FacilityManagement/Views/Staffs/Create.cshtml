@@ -1,0 +1,71 @@
+﻿@model FacilityManagement.Models.Staff
+
+@{
+    ViewData["Title"] = "Create";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center text-primary">Create</h1>
+
+<h4 class="text-center">Staff</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <!-- Validation summary -->
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- Staff Name Input -->
+            <div class="form-group mb-3">
+                <label asp-for="StaffName" class="form-label">Staff Name</label>
+                <input asp-for="StaffName" class="form-control form-control-lg" placeholder="Enter staff name" />
+                <span asp-validation-for="StaffName" class="text-danger"></span>
+            </div>
+
+            <!-- Position Input -->
+            <div class="form-group mb-3">
+                <label asp-for="Position" class="form-label">Position</label>
+                <input asp-for="Position" class="form-control form-control-lg" placeholder="Enter position" />
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+
+            <!-- Phone Input -->
+            <div class="form-group mb-3">
+                <label asp-for="Phone" class="form-label">Phone</label>
+                <input asp-for="Phone" class="form-control form-control-lg" placeholder="Enter phone number" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <!-- Email Input -->
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control form-control-lg" placeholder="Enter email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Assigned Room Dropdown -->
+            <div class="form-group mb-3">
+                <label asp-for="AssignedRoomId" class="form-label">Assigned Room</label>
+                <select asp-for="AssignedRoomId" class="form-control form-control-lg" asp-items="ViewBag.AssignedRoomId">
+                    <option value="">-- Select Room --</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary btn-lg w-100" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-link">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

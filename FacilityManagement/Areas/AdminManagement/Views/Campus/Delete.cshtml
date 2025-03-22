@@ -1,0 +1,74 @@
+﻿@model FacilityManagement.Models.Campus
+
+@{
+    ViewData["Title"] = "Xóa Khuôn Viên";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .btn-danger {
+        background-color: #d9534f;
+        border-color: #d9534f;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+
+    .btn-link.text-primary {
+        color: #052c93;
+        font-weight: bold;
+    }
+
+        .btn-link.text-primary:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-trash-alt"></i> Xóa Khuôn Viên</h1>
+
+<h3 class="text-danger"><i class="fas fa-exclamation-triangle"></i> Bạn có chắc chắn muốn xóa khuôn viên này?</h3>
+<div>
+    <h4 class="text-primary"><i class="fas fa-map-marked-alt"></i> Thông Tin Khuôn Viên</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <i class="fas fa-signature"></i> @Html.DisplayNameFor(model => model.CampusName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CampusName)
+        </dd>
+        <dt class="col-sm-2">
+            <i class="fas fa-map-marker-alt"></i> @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            <i class="fas fa-file-alt"></i> @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CampusId" />
+        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</button>
+        <a asp-action="Index" class="btn btn-link text-primary"><i class="fas fa-arrow-left"></i> Trở Về Danh Sách</a>
+    </form>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

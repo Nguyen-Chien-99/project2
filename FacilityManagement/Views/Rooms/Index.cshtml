@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FacilityManagement.Models.Room>
+
+@{
+    ViewData["Title"] = "Danh Sách Phòng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+<h2 class="text-center text-primary fw-bold mt-4"><i class="fas fa-door-open"></i> Danh Sách Phòng</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="text-white" style="background-color: #052c93;">
+        <tr>
+            <th><i class="fas fa-signature"></i> Tên Phòng</th>
+            <th><i class="fas fa-tags"></i> Loại Phòng</th>
+            <th><i class="fas fa-users"></i> Sức Chứa</th>
+            <th><i class="fas fa-file-alt"></i> Mô Tả</th>
+            <th><i class="fas fa-building"></i> Tòa Nhà</th>
+            <th><i class="fas fa-tools"></i> Thiết Bị</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <td>@room.RoomName</td>
+                <td>@room.RoomType</td>
+                <td>@room.Capacity</td>
+                <td>@room.Description</td>
+                <td>@room.Building.BuildingName</td>
+                <td>
+                    @if (ViewBag.Equipments != null)
+                    {
+                        var roomEquipments = ((List<FacilityManagement.Models.Equipment>)ViewBag.Equipments)
+                        .Where(e => e.RoomId == room.RoomId)
+                        .ToList();
+
+                        if (roomEquipments.Any())
+                        {
+                            <ul>
+                                @foreach (var eq in roomEquipments)
+                                {
+                                    <li>@eq.EquipmentName - @eq.Status</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Không có thiết bị</span>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

@@ -1,0 +1,95 @@
+﻿@model FacilityManagement.Models.Admin
+
+@{
+    ViewData["Title"] = "Thêm Quản Trị Viên";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .form-group label {
+        font-weight: bold;
+        color: #052c93;
+    }
+
+    .text-primary {
+        color: #052c93 !important;
+    }
+
+    .btn-secondary {
+        background-color: #e0e0e0;
+        border-color: #e0e0e0;
+        color: #333;
+    }
+
+        .btn-secondary:hover {
+            background-color: #d0d0d0;
+            border-color: #d0d0d0;
+        }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-user-plus"></i> Thêm Quản Trị Viên</h1>
+
+<h4><i class="fas fa-info-circle"></i> Thông Tin Quản Trị</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="AdminName" class="control-label"><i class="fas fa-user"></i> Họ và Tên</label>
+                <input asp-for="AdminName" class="form-control" placeholder="Nhập họ và tên" />
+                <span asp-validation-for="AdminName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"><i class="fas fa-user-circle"></i> Tên Đăng Nhập</label>
+                <input asp-for="Username" class="form-control" placeholder="Nhập tên đăng nhập" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"><i class="fas fa-lock"></i> Mật Khẩu</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Nhập mật khẩu" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"><i class="fas fa-envelope"></i> Email</label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="Nhập email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"><i class="fas fa-phone"></i> Số Điện Thoại</label>
+                <input asp-for="Phone" type="tel" class="form-control" placeholder="Nhập số điện thoại" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Thêm Mới</button>
+                <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay Lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

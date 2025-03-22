@@ -1,0 +1,86 @@
+﻿@model IEnumerable<FacilityManagement.Models.Maintenance>
+
+@{
+    ViewData["Title"] = "Danh Sách Bảo Trì";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6b;
+            border-color: #041f6b;
+        }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: black;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-wrench"></i> Danh Sách Bảo Trì</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo Mới</a>
+</p>
+<table class="table table-bordered table-hover">
+    <thead class="text-white" style="background-color: #052c93;">
+        <tr>
+            <th><i class="fas fa-calendar-alt"></i> @Html.DisplayNameFor(model => model.MaintenanceDate)</th>
+            <th><i class="fas fa-file-alt"></i> @Html.DisplayNameFor(model => model.Description)</th>
+            <th><i class="fas fa-check-circle"></i> @Html.DisplayNameFor(model => model.Status)</th>
+            <th><i class="fas fa-tools"></i> @Html.DisplayNameFor(model => model.Equipment)</th>
+            <th><i class="fas fa-cogs"></i> Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaintenanceDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipment.EquipmentName)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.MaintenanceId" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i> Chi Tiết</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

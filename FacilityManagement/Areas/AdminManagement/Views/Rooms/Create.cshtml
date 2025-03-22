@@ -1,0 +1,100 @@
+﻿@model FacilityManagement.Models.Room
+
+@{
+    ViewData["Title"] = "Thêm Phòng";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .btn-secondary {
+        background-color: #ccc;
+        border-color: #ccc;
+        color: black;
+    }
+
+        .btn-secondary:hover {
+            background-color: #b3b3b3;
+        }
+
+    .form-label {
+        font-weight: bold;
+        color: #052c93;
+    }
+
+    .border-primary {
+        border-color: #052c93 !important;
+    }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-plus-circle"></i> Thêm Phòng</h1>
+
+<h4 class="text-dark"><i class="fas fa-info-circle"></i> Nhập Thông Tin Phòng</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" class="p-3 shadow-sm rounded bg-white">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="RoomName" class="form-label"><i class="fas fa-signature"></i> Tên Phòng</label>
+                <input asp-for="RoomName" class="form-control border-primary" />
+                <span asp-validation-for="RoomName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="BuildingId" class="form-label"><i class="fas fa-building"></i> Toà Nhà</label>
+                <select asp-for="BuildingId" class="form-control border-primary" asp-items="ViewBag.BuildingId"></select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="RoomType" class="form-label"><i class="fas fa-list-alt"></i> Loại Phòng</label>
+                <input asp-for="RoomType" class="form-control border-primary" />
+                <span asp-validation-for="RoomType" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Capacity" class="form-label"><i class="fas fa-users"></i> Sức Chứa</label>
+                <input asp-for="Capacity" class="form-control border-primary" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"><i class="fas fa-file-alt"></i> Mô Tả</label>
+                <input asp-for="Description" class="form-control border-primary" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Thêm</button>
+                <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay Lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

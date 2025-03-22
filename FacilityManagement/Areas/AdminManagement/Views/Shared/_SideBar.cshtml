@@ -1,0 +1,267 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<aside class="main-sidebar sidebar-custom elevation-4 position-fixed" style="background-color: #012d96; color: white; height: 100vh; overflow-y: auto;">
+
+    <!-- Brand Logo -->
+    <a href="/adminmanagement/dashboard" class="brand-link" style="background-color: #012d96; color: white;">
+        <img src="~/images/Logo.png" alt="Logo Hunre" width="75px">
+        <span class="brand-text font-weight-light ms-2">Quản lý</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel -->
+        
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Menu Item Template -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" style="color: white;">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-container">
+                                <i class="fas fa-user-cog fa-xl"></i>
+                            </div>
+                            <p class="ms-3">Tài khoản Admin<i class="right fas fa-angle-down"></i></p>
+                        </div>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Admins" asp-action="Index" class="nav-link" style="color: white;">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Admins" asp-action="Create" class="nav-link" style="color: white;">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>Thêm</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link" style="color: white;">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-container">
+                                <i class="fas fa-building fa-xl"></i>
+                            </div>
+                            <p class="ms-3">Quản lý Toà<i class="right fas fa-angle-down"></i></p>
+                        </div>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Buildings" asp-action="Index" class="nav-link" style="color: white;">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Buildings" asp-action="Create" class="nav-link" style="color: white;">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>Thêm</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" style="color: white;">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-container">
+                                <i class="fas fa-building fa-xl"></i>
+                            </div>
+                            <p class="ms-3">Quản lý Phòng<i class="right fas fa-angle-down"></i></p>
+                        </div>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Rooms" asp-action="Index" class="nav-link" style="color: white;">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Rooms" asp-action="Create" class="nav-link" style="color: white;">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>Thêm</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex justify-content-center" style="width: 30px">
+                                <i class="fas fa-users fa-xl"></i>
+                            </div>
+                            <p class="ms-3">
+                                Quản lý nhân viên
+                                <i class="right fas fa-angle-down"></i>
+                            </p>
+                        </div>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Staffs" asp-action="Index" class="nav-link">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Staffs" asp-action="Create" class="nav-link">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>Thêm</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex justify-content-center" style="width: 30px">
+                                <i class="fas fa-tools fa-xl"></i>
+                            </div>
+                            <p class="ms-3">
+                                Quản lý Vật tư
+                                <i class="right fas fa-angle-down"></i>
+                            </p>
+                        </div>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Equipments" asp-action="Index" class="nav-link">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Equipments" asp-action="Create" class="nav-link">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>Thêm</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex justify-content-center" style="width: 30px">
+                                <i class="fas fa-wrench fa-xl"></i>
+                            </div>
+                            <p class="ms-3">
+                                Quản lý Bảo Trì
+                                <i class="right fas fa-angle-down"></i>
+                            </p>
+                        </div>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Maintenances" asp-action="Index" class="nav-link">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Maintenances" asp-action="Create" class="nav-link">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>Thêm</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex justify-content-center" style="width: 30px">
+                                <i class="fas fa-building fa-xl"></i>
+                            </div>
+                            <p class="ms-3">
+                                Quản lý Cơ sở
+                                <i class="right fas fa-angle-down"></i>
+                            </p>
+                        </div>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Campus" asp-action="Index" class="nav-link">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Campus" asp-action="Create" class="nav-link">
+                                <i class="fas fa-plus-circle nav-icon"></i>
+                                <p>Thêm</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex justify-content-center" style="width: 30px">
+                                <i class="fas fa-calendar-alt fa-xl"></i>
+                            </div>
+                            <p class="ms-3">
+                                Lịch sử dụng phòng
+                                <i class="right fas fa-angle-down"></i>
+                            </p>
+                        </div>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Usages" asp-action="Index" class="nav-link">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="AdminManagement" asp-controller="Usages" asp-action="Create" class="nav-link">
+                                <i class="fas fa-edit nav-icon"></i>
+                                <p>Thêm</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <div class="info" style="background-color:#012d96;">
+                    @{
+                        if (HttpContextAccessor.HttpContext.Session.GetString("AdminLogin") != null)
+
+                        {
+                            <a href="#" class="d-block" style="color: white;">@HttpContextAccessor.HttpContext.Session.GetString("AdminLogin")</a>
+                            <a asp-action="Logout" asp-controller="Login" class="logout-link" style="color: white;">Đăng xuất</a>
+                        }
+
+                        else
+
+                        {
+                            <a href="#" class="d-block" style="color: white;">Nguyen Viet Chien</a>
+                        }
+                    }
+                </div>
+                <style>
+                    .nav-link:hover {
+                        background-color: white !important;
+                        color: #012d96 !important;
+                        transition: 0.3s;
+                    }
+
+                    .nav-treeview .nav-link:hover {
+                        background-color: #f0f0f0 !important;
+                        color: #012d96 !important;
+                    }
+
+                    .brand-link:hover {
+                        background-color: #011f6b !important;
+                    }
+                </style>
+            </ul>
+        </nav>
+    </div>
+</aside>

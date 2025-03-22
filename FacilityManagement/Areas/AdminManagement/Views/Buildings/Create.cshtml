@@ -1,0 +1,91 @@
+﻿@model FacilityManagement.Models.Building
+
+@{
+    ViewData["Title"] = "Thêm Tòa Nhà";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6b;
+            border-color: #041f6b;
+        }
+
+    .btn-secondary {
+        background-color: #ccc;
+        border-color: #ccc;
+        color: black;
+    }
+
+        .btn-secondary:hover {
+            background-color: #b3b3b3;
+        }
+
+    .form-group label {
+        font-weight: bold;
+        color: #052c93;
+    }
+
+    .back-link {
+        color: #052c93;
+        font-weight: bold;
+    }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-building"></i> Thêm Tòa Nhà</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="BuildingName" class="control-label"><i class="fas fa-signature"></i> Tên Tòa Nhà</label>
+                <input asp-for="BuildingName" class="form-control" placeholder="Nhập tên tòa nhà" />
+                <span asp-validation-for="BuildingName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CampusId" class="control-label"><i class="fas fa-map-marker-alt"></i> Mã Cơ Sở</label>
+                <select asp-for="CampusId" class="form-control" asp-items="ViewBag.CampusId"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"><i class="fas fa-file-alt"></i> Mô Tả</label>
+                <input asp-for="Description" class="form-control" placeholder="Nhập mô tả" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Thêm</button>
+                <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-list"></i> Quay lại danh sách</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

@@ -1,0 +1,80 @@
+﻿@model FacilityManagement.Models.Admin
+
+@{
+    ViewData["Title"] = "Xóa Quản Trị Viên";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .btn-danger {
+        background-color: #d9534f;
+        border-color: #d9534f;
+    }
+
+        .btn-danger:hover {
+            background-color: #c9302c;
+            border-color: #c9302c;
+        }
+
+    .btn-secondary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #052c93;
+    }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-trash-alt"></i> Xóa Quản Trị Viên</h1>
+
+<h3 class="text-danger"><i class="fas fa-exclamation-triangle"></i> Bạn có chắc chắn muốn xóa quản trị viên này?</h3>
+<div>
+    <h4 class="text-primary"><i class="fas fa-info-circle"></i> Thông Tin Quản Trị</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3"><i class="fas fa-user"></i> Họ và Tên</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.AdminName)</dd>
+
+        <dt class="col-sm-3"><i class="fas fa-user-circle"></i> Tên Đăng Nhập</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Username)</dd>
+
+        <dt class="col-sm-3"><i class="fas fa-lock"></i> Mật Khẩu</dt>
+        <dd class="col-sm-9">********</dd>
+        <dt class="col-sm-3"><i class="fas fa-envelope"></i> Email</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+        <dt class="col-sm-3"><i class="fas fa-phone"></i> Số Điện Thoại</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Phone)</dd>
+
+        <dt class="col-sm-3"><i class="fas fa-calendar-alt"></i> Ngày Tạo</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.CreatedAt)</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AdminId" />
+        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Xóa</button>
+        <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay Lại</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

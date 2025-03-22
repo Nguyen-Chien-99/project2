@@ -1,0 +1,89 @@
+﻿@model FacilityManagement.Models.Usage
+
+@{
+    ViewData["Title"] = "Chi Tiết Sử Dụng";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #052c93;
+    }
+
+    .dl-horizontal dt {
+        color: #052c93;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .btn-secondary {
+        background-color: #ccc;
+        border-color: #ccc;
+        color: black;
+    }
+
+        .btn-secondary:hover {
+            background-color: #b3b3b3;
+        }
+</style>
+
+<div class="container">
+    <h1 class="text-primary"><i class="fas fa-info-circle"></i> Chi Tiết Sử Dụng</h1>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <i class="fas fa-user"></i> @Html.DisplayNameFor(model => model.UsedBy)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UsedBy)
+        </dd>
+        <dt class="col-sm-2">
+            <i class="fas fa-calendar-alt"></i> @Html.DisplayNameFor(model => model.UsageDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UsageDate)
+        </dd>
+        <dt class="col-sm-2">
+            <i class="fas fa-file-alt"></i> @Html.DisplayNameFor(model => model.Purpose)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Purpose)
+        </dd>
+        <dt class="col-sm-2">
+            <i class="fas fa-door-open"></i> @Html.DisplayNameFor(model => model.Room)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Room.RoomName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.UsageId" class="btn btn-primary"><i class="fas fa-edit"></i> Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay Lại Danh Sách</a>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

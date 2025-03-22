@@ -1,0 +1,96 @@
+﻿@model IEnumerable<FacilityManagement.Models.Staff>
+
+@{
+    ViewData["Title"] = "Danh Sách Nhân Viên";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: black;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+
+    .table th {
+        background-color: #052c93;
+        color: white;
+        text-align: center;
+    }
+
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-users"></i> Danh Sách Nhân Viên</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-user-plus"></i> Thêm Nhân Viên</a>
+</p>
+
+<table class="table table-bordered table-hover shadow-sm bg-white">
+    <thead class="bg-primary text-white">
+        <tr>
+            <th><i class="fas fa-signature"></i> @Html.DisplayNameFor(model => model.StaffName)</th>
+            <th><i class="fas fa-briefcase"></i> @Html.DisplayNameFor(model => model.Position)</th>
+            <th><i class="fas fa-phone"></i> @Html.DisplayNameFor(model => model.Phone)</th>
+            <th><i class="fas fa-envelope"></i> @Html.DisplayNameFor(model => model.Email)</th>
+            <th><i class="fas fa-door-open"></i> @Html.DisplayNameFor(model => model.AssignedRoom)</th>
+            <th class="text-center"><i class="fas fa-cogs"></i> Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.StaffName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Position)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.AssignedRoom.RoomName)</td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.StaffId" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.StaffId" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i> Chi Tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.StaffId" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

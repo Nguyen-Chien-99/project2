@@ -1,0 +1,95 @@
+﻿@model FacilityManagement.Models.Staff
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa Nhân Viên";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93 !important;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6b;
+            border-color: #041f6b;
+        }
+
+    .btn-secondary {
+        background-color: #ccc;
+        border-color: #ccc;
+        color: black;
+    }
+
+        .btn-secondary:hover {
+            background-color: #b3b3b3;
+        }
+
+    .form-group label {
+        font-weight: bold;
+        color: #052c93;
+    }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-user-edit"></i> Chỉnh Sửa Nhân Viên</h1>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6 bg-white p-4 shadow rounded">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="StaffId" />
+
+            <div class="form-group">
+                <label asp-for="StaffName" class="control-label"><i class="fas fa-signature"></i> Họ và Tên</label>
+                <input asp-for="StaffName" class="form-control" />
+                <span asp-validation-for="StaffName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Position" class="control-label"><i class="fas fa-briefcase"></i> Chức Vụ</label>
+                <input asp-for="Position" class="form-control" />
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"><i class="fas fa-phone"></i> Số Điện Thoại</label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"><i class="fas fa-envelope"></i> Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AssignedRoomId" class="control-label"><i class="fas fa-door-open"></i> Phòng Được Phân Công</label>
+                <select asp-for="AssignedRoomId" class="form-control" asp-items="ViewBag.AssignedRoomId"></select>
+                <span asp-validation-for="AssignedRoomId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center mt-3">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Lưu</button>
+                <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay Lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

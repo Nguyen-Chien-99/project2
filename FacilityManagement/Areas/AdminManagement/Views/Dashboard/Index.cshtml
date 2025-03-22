@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+<style>
+    /* Màu chủ đạo */
+    .text-primary {
+        color: #052c93 !important;
+    }
+
+    .bg-primary {
+        background-color: #052c93 !important;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+    }
+
+        .btn-primary:hover {
+            background-color: #04227a;
+            border-color: #04227a;
+        }
+
+    /* Định dạng chung */
+    .card {
+        border: none;
+    }
+
+    .card-title {
+        color: #052c93;
+        font-weight: bold;
+    }
+
+    .list-unstyled li {
+        margin-bottom: 8px;
+    }
+
+    .list-unstyled i {
+        margin-right: 8px;
+        color: #052c93;
+    }
+
+    /* Padding và margin cho giao diện đẹp hơn */
+    .container {
+        padding: 20px;
+    }
+
+    .mb-4 {
+        margin-bottom: 2rem;
+    }
+</style>
+<h1>Đây là thống kê tổng quan về hệ thống.</h1>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h3 class="card-title text-primary"><i class="fas fa-tools"></i> Thống kê Thiết bị</h3>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-list-ol"></i> Tổng số thiết bị: <strong>@Model.TotalEquipment</strong></li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Hỏng: <strong>@Model.BrokenEquipment</strong></li>
+                    <li><i class="fas fa-check-circle"></i> Sẵn sàng: <strong>@Model.AvailableEquipment</strong></li>
+                    <li><i class="fas fa-wrench"></i> Đang sửa chữa: <strong>@Model.UnderRepairEquipment</strong></li>
+                </ul>
+                <canvas id="equipmentChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h3 class="card-title text-primary"><i class="fas fa-calendar-check"></i> Thống kê Bảo trì</h3>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check"></i> Hoàn thành: <strong>@Model.CompletedMaintenance</strong></li>
+                    <li><i class="fas fa-clock"></i> Chưa giải quyết: <strong>@Model.PendingMaintenance</strong></li>
+                </ul>
+                <canvas id="maintenanceChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6iV+oe3QmTL4qZTfV7GDNpCvC40puNSxDR0HCYOaLBWDZLRQlt50ypOFzysw9OGrLc05vnlQKVy9zeUCQQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx1 = document.getElementById('equipmentChart').getContext('2d');
+    var equipmentChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['Tổng thiết bị', 'Hỏng', 'Sẵn sàng', 'Đang sửa chữa'],
+            datasets: [{
+                label: 'Thống kê thiết bị',
+                data: [@Model.TotalEquipment, @Model.BrokenEquipment, @Model.AvailableEquipment, @Model.UnderRepairEquipment],
+                backgroundColor: ['blue', 'red', 'green', 'orange']
+            }]
+        }
+    });
+
+    var ctx2 = document.getElementById('maintenanceChart').getContext('2d');
+    var maintenanceChart = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['Hoàn thành', 'Chưa giải quyết'],
+            datasets: [{
+                data: [@Model.CompletedMaintenance, @Model.PendingMaintenance],
+                backgroundColor: ['green', 'red']
+            }]
+        }
+    });
+</script>

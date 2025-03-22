@@ -1,0 +1,96 @@
+﻿@model IEnumerable<FacilityManagement.Models.Room>
+
+@{
+    ViewData["Title"] = "Danh Sách Phòng";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6a;
+            border-color: #041f6a;
+        }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: black;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+
+    .table th {
+        background-color: #052c93;
+        color: white;
+        text-align: center;
+    }
+
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-door-open"></i> Danh Sách Phòng</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo Mới</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th><i class="fas fa-signature"></i> @Html.DisplayNameFor(model => model.RoomName)</th>
+            <th><i class="fas fa-list-alt"></i> @Html.DisplayNameFor(model => model.RoomType)</th>
+            <th><i class="fas fa-users"></i> @Html.DisplayNameFor(model => model.Capacity)</th>
+            <th><i class="fas fa-file-alt"></i> @Html.DisplayNameFor(model => model.Description)</th>
+            <th><i class="fas fa-building"></i> @Html.DisplayNameFor(model => model.Building)</th>
+            <th class="text-center"><i class="fas fa-cogs"></i> Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.RoomName)</td>
+                <td>@Html.DisplayFor(modelItem => item.RoomType)</td>
+                <td>@Html.DisplayFor(modelItem => item.Capacity)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Building.BuildingName)</td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.RoomId" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.RoomId" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Chi Tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.RoomId" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

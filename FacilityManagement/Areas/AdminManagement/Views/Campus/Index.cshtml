@@ -1,0 +1,112 @@
+﻿@model IEnumerable<FacilityManagement.Models.Campus>
+
+@{
+    ViewData["Title"] = "Danh Sách Cơ Sở";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .btn-primary {
+        background-color: #052c93;
+        border-color: #052c93;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #041f6b;
+            border-color: #041f6b;
+        }
+
+    .btn-secondary {
+        background-color: #ccc;
+        border-color: #ccc;
+        color: black;
+    }
+
+        .btn-secondary:hover {
+            background-color: #b3b3b3;
+        }
+
+    .table th {
+        background-color: #052c93;
+        color: white;
+        text-align: center;
+    }
+
+    .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .action-links a {
+        margin: 0 5px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .action-links a:hover {
+            text-decoration: underline;
+        }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: black;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+</style>
+
+<h1 class="text-primary text-center"><i class="fas fa-map-marked-alt"></i> Danh Sách Cơ Sở</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Thêm Cơ Sở</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th><i class="fas fa-signature"></i> Tên Cơ Sở</th>
+            <th><i class="fas fa-map-marker-alt"></i> Địa Chỉ</th>
+            <th><i class="fas fa-file-alt"></i> Mô Tả</th>
+            <th><i class="fas fa-tools"></i> Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CampusName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td class="action-links">
+                    <a asp-action="Edit" asp-route-id="@item.CampusId" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.CampusId" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i> Chi Tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.CampusId" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

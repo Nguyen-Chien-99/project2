@@ -1,0 +1,79 @@
+﻿@model FacilityManagement.Models.Maintenance
+
+@{
+    ViewData["Title"] = "Chi Tiết Phiếu Bảo Trì";
+    Layout = "~/Areas/AdminManagement/Views/Shared/Admin.cshtml";
+}
+
+<style>
+    body {
+        background-color: white;
+    }
+
+    .text-primary {
+        color: #052c93;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        color: black;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+        }
+
+    .btn-secondary {
+        background-color: #ccc;
+        border-color: #ccc;
+        color: black;
+    }
+
+        .btn-secondary:hover {
+            background-color: #b3b3b3;
+        }
+</style>
+
+<h1 class="text-primary"><i class="fas fa-info-circle"></i> Chi Tiết Phiếu Bảo Trì</h1>
+
+<div>
+    <h4 class="text-primary"><i class="fas fa-tools"></i> Thông Tin Bảo Trì</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            <i class="fas fa-calendar-alt"></i> @Html.DisplayNameFor(model => model.MaintenanceDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaintenanceDate)
+        </dd>
+        <dt class="col-sm-2">
+            <i class="fas fa-file-alt"></i> @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            <i class="fas fa-toggle-on"></i> @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class="col-sm-2">
+            <i class="fas fa-tools"></i> @Html.DisplayNameFor(model => model.Equipment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Equipment.EquipmentName)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.MaintenanceId" class="btn btn-warning"><i class="fas fa-edit"></i> Chỉnh Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay lại danh sách</a>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}
